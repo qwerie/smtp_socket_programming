@@ -38,8 +38,8 @@ public class SMTPSender {
         if (!line.startsWith("334"))
             throw new Exception("로그인 시도에서 실패했습니다:" + line);
 
-        String id = Base64.getEncoder().encodeToString("qwerie8899".getBytes());
-        String password1 = Base64.getEncoder().encodeToString("private".getBytes()); //you should put your own password! (비밀번호라 삭제)
+        String id = Base64.getEncoder().encodeToString("qwerie8899".getBytes()); //you should put your own google id.
+        String password1 = Base64.getEncoder().encodeToString("private".getBytes()); //you should put your own google app-password. (구글 앱 비밀번호 발급 후 넣어주면 됩니다.)
 
         System.out.println("[아이디를 전송하겠습니다.]");
         pw.println(id);
@@ -101,9 +101,10 @@ public class SMTPSender {
     public static void main(String args[]) {
         try {
             String content = new String();
+            // 메일 내용 (Subject, From, To, Content-Type are not mandatory. 앞 서식은 안넣어줘도 메일전송에는 무방합니다.)
             content = "Subject: SMTP로 메일 전송하기\n"
-                    + "From: qwerie <qwerie8899@gmail.com>\r\n"
-                    + "To: qwerie8 <qwerie8899@gmail.com>\n"
+                    + "From: 전유진 <qwerie8899@gmail.com>\r\n"
+                    + "To: 전유진 <qwerie8899@gmail.com>\n"
                     + "Content-Type: text/plain; charset=utf-8\n"
                     + "Hello, this is smtp mail test.\n"
                     + "안녕하세요\n";
