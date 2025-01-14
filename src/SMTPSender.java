@@ -39,7 +39,7 @@ public class SMTPSender {
             throw new Exception(">>> 로그인 시도에서 실패했습니다:" + line);
 
         String id = Base64.getEncoder().encodeToString("qwerie8899".getBytes()); //google id.
-        String password = Base64.getEncoder().encodeToString("pohfmhkvaieimron".getBytes()); //google app-password
+        String password = Base64.getEncoder().encodeToString("your_own_password".getBytes()); //google app-password (16자리)
 
         System.out.println("아이디를 전송하겠습니다.");
         pw.println(id);
