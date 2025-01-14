@@ -20,79 +20,79 @@ public class SMTPSender {
         System.out.println("서버에 연결되었습니다.");
 
         String line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("220"))
-            throw new Exception("SMTP 서버가 아닙니다:" + line);
+            throw new Exception(">>> SMTP 서버가 아닙니다:" + line);
 
-        System.out.println("[HELO 명령을 전송하겠습니다.]");
+        System.out.println("HELO 명령을 전송하겠습니다.");
         pw.println("HELO smtp.gmail.com");  // mydomain.name 도메인 이름을 전달해준다.
         line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("250"))
-            throw new Exception("HELO 명령에서 실패했습니다:" + line);
+            throw new Exception(">>> HELO 명령에서 실패했습니다:" + line);
 
-        System.out.println("[로그인을 시도하겠습니다.]");
+        System.out.println("로그인을 시도하겠습니다.");
         pw.println("AUTH LOGIN"); // auth plain + "\id\pw"
         line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("334"))
-            throw new Exception("로그인 시도에서 실패했습니다:" + line);
+            throw new Exception(">>> 로그인 시도에서 실패했습니다:" + line);
 
-        String id = Base64.getEncoder().encodeToString("qwerie8899".getBytes()); //you should put your own google id.
-        String password1 = Base64.getEncoder().encodeToString("private".getBytes()); //you should put your own google app-password. (구글 앱 비밀번호 발급 후 넣어주면 됩니다.)
+        String id = Base64.getEncoder().encodeToString("qwerie8899".getBytes()); //google id.
+        String password = Base64.getEncoder().encodeToString("pohfmhkvaieimron".getBytes()); //google app-password
 
-        System.out.println("[아이디를 전송하겠습니다.]");
+        System.out.println("아이디를 전송하겠습니다.");
         pw.println(id);
         line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("334"))
-            throw new Exception("아이디 전송에서 실패했습니다:" + line);
-        System.out.println("[password를 전송하겠습니다.]");
-        pw.println(password1);
+            throw new Exception(">>> 아이디 전송에서 실패했습니다:" + line);
+        System.out.println("password를 전송하겠습니다.");
+        pw.println(password);
         line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("235"))
-            throw new Exception("비밀번호 전송에서 실패했습니다." + line);
+            throw new Exception(">>> 비밀번호 전송에서 실패했습니다." + line);
 
 
-        System.out.println("[MAIL FROM 명령을 전송하겠습니다.]");
+        System.out.println("MAIL FROM 명령을 전송하겠습니다.");
         pw.println("MAIL FROM:" + sender);
         line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("250"))
-            throw new Exception("MAIL FROM 명령에서 실패했습니다:" + line);
+            throw new Exception(">>> MAIL FROM 명령에서 실패했습니다:" + line);
 
-        System.out.println("[RCPT 명령을 전송하겠습니다.]");
+        System.out.println("RCPT 명령을 전송하겠습니다.");
         pw.println("RCPT TO:" + recipient);
         line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("250"))
-            throw new Exception("RCPT TO 명령에서 실패했습니다:" + line);
+            throw new Exception(">>> RCPT TO 명령에서 실패했습니다:" + line);
 
-        System.out.println("[DATA 명령을 전송하겠습니다.]");
+        System.out.println("DATA 명령을 전송하겠습니다.");
         pw.println("DATA");
         line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("354"))
-            throw new Exception("DATA 명령에서 실패했습니다:" + line);
+            throw new Exception(">>> DATA 명령에서 실패했습니다:" + line);
 
 
 
-        System.out.println("[본문을 전송하겠습니다.]");
+        System.out.println("본문을 전송하겠습니다.");
         pw.println(content);
         pw.println(".");
         line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("250"))
-            throw new Exception("DATA(본문) 전송에서 실패했습니다:" + line);
+            throw new Exception(">>> DATA(본문) 전송에서 실패했습니다:" + line);
 
 
         System.out.println("접속을 종료합니다.");
         pw.println("quit");
         line = br.readLine();
-        System.out.println("답변:" + line);
+        System.out.println("답변 > " + line);
         if (!line.startsWith("221"))
-            throw new Exception("접속 종료에 실패하였습니다:" + line);
+            throw new Exception(">>> 접속 종료에 실패하였습니다:" + line);
 
         pw.close();
         br.close();
@@ -101,13 +101,13 @@ public class SMTPSender {
     public static void main(String args[]) {
         try {
             String content = new String();
-            // 메일 내용 (Subject, From, To, Content-Type are not mandatory. 앞 서식은 안넣어줘도 메일전송에는 무방합니다.)
-            content = "Subject: SMTP로 메일 전송하기\n"
+            // 메일 내용
+            content = "Subject: SMTP로 메일보내기\n"
                     + "From: 전유진 <qwerie8899@gmail.com>\r\n"
                     + "To: 전유진 <qwerie8899@gmail.com>\n"
                     + "Content-Type: text/plain; charset=utf-8\n"
                     + "Hello, this is smtp mail test.\n"
-                    + "안녕하세요\n";
+                    + "안녕하세요. 본 메일은 SMTP로 보내진 메일입니다.\n";
             SMTPSender.sendMail("smtp.gmail.com", "<qwerie8899@gmail.com>", "<qwerie8899@gmail.com>", content);
             System.out.println("==========================");
             System.out.println("메일이 전송되었습니다.");
