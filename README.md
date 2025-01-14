@@ -11,7 +11,7 @@ SMTP를 [RFC5321](https://www.rfc-editor.org/rfc/rfc5321.html)과 ESMTP (Extende
 - 1736842911 = Google SMTP 서버의 메시지 ID 또는 상태 추적용 값
 
 ## 결과
-![image](https://github.com/user-attachments/assets/ac8e2ff3-4da4-4b19-b05f-23e9be59cb5e)
+![image](https://github.com/user-attachments/assets/e68ecade-8336-444e-8668-774f83b15430)
 
 ## 코드 내용 설명
 ```
@@ -26,6 +26,6 @@ content = "Subject: SMTP로 메일보내기\n"
 
 ```
 String id = Base64.getEncoder().encodeToString("your_own_id".getBytes());
-String password1 = Base64.getEncoder().encodeToString("your_own_pw".getBytes()); 
+String password = Base64.getEncoder().encodeToString("your_own_pw".getBytes()); 
 ```
 - 본인의 구글 아이디와 발급받은 앱 비밀번호를 넣어주면 됩니다.
