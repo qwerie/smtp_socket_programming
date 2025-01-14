@@ -39,7 +39,7 @@ public class SMTPSender {
             throw new Exception("로그인 시도에서 실패했습니다:" + line);
 
         String id = Base64.getEncoder().encodeToString("qwerie8899".getBytes());
-        String password1 = Base64.getEncoder().encodeToString("nchhuewhjgsawcha".getBytes());
+        String password1 = Base64.getEncoder().encodeToString("private".getBytes()); //you should put your own password! (비밀번호라 삭제)
 
         System.out.println("[아이디를 전송하겠습니다.]");
         pw.println(id);
@@ -101,7 +101,7 @@ public class SMTPSender {
     public static void main(String args[]) {
         try {
             String content = new String();
-            content = "Subject: 찐막\n"
+            content = "Subject: SMTP로 메일 전송하기\n"
                     + "From: qwerie <qwerie8899@gmail.com>\r\n"
                     + "To: qwerie8 <qwerie8899@gmail.com>\n"
                     + "Content-Type: text/plain; charset=utf-8\n"
