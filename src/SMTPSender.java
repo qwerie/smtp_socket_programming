@@ -38,8 +38,8 @@ public class SMTPSender {
         if (!line.startsWith("334"))
             throw new Exception(">>> 로그인 시도에서 실패했습니다:" + line);
 
-        String id = Base64.getEncoder().encodeToString("qwerie8899".getBytes()); //google id.
-        String password = Base64.getEncoder().encodeToString("your_own_password".getBytes()); //google app-password (16자리)
+        String id = Base64.getEncoder().encodeToString("your_own_id".getBytes()); //google id.
+        String password = Base64.getEncoder().encodeToString("your_own_pw".getBytes()); //google app-password (16자리)
 
         System.out.println("아이디를 전송하겠습니다.");
         pw.println(id);
@@ -106,8 +106,8 @@ public class SMTPSender {
                     + "From: 전유진 <qwerie8899@gmail.com>\r\n"
                     + "To: 전유진 <qwerie8899@gmail.com>\n"
                     + "Content-Type: text/plain; charset=utf-8\n"
-                    + "Hello, this is smtp mail test.\n"
-                    + "안녕하세요. 본 메일은 SMTP로 보내진 메일입니다.\n";
+                    + "Hello, this is SMTP mail test.\n"
+                    + "안녕하세요. 본 메일은 SMTP로 보내진 메일입니다.\n"
             SMTPSender.sendMail("smtp.gmail.com", "<qwerie8899@gmail.com>", "<qwerie8899@gmail.com>", content);
             System.out.println("==========================");
             System.out.println("메일이 전송되었습니다.");
