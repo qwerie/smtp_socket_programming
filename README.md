@@ -2,15 +2,15 @@
 SMTP를 [RFC5321](https://www.rfc-editor.org/rfc/rfc5321.html)과 ESMTP (Extended SMTP)기반으로 JAVA 상에서 메일 전송을 구현한 코드입니다.
 
 
-1. 개요
+### 1. 개요
 이 프로그램은 Java 기반의 SMTP(메일 전송 프로토콜) 클라이언트를 구현한 것으로, SSL(Secure Sockets Layer) 기반의 Socket Programming을 사용하여 Gmail SMTP 서버를 통해 메일을 전송하는 콘솔 애플리케이션이다. Java 내장 라이브러리만을 활용하여 구현되었으며, **SMTP 기본 프로토콜 명령어(HELO, AUTH, MAIL FROM, RCPT TO, DATA, QUIT 등)**를 직접 주고받는다.
 
-2. 주요 기능 및 동작 과정
+### 2. 주요 기능 및 동작 과정
 ```
 
 1. SMTP 서버 연결
 
-- smtp.gmail.com을 SSL을 사용하여 465 포트로 연결 (Socket + SSLSocket)
+-smtp.gmail.com을 SSL을 사용하여 465 포트로 연결 (Socket + SSLSocket)
 
 - 서버 응답을 확인하여 연결이 정상적으로 이루어졌는지 검증
 
